@@ -4,6 +4,7 @@ import {API} from "../../backend"
 // Backend for Signup
 export const signup = admin => {
     return fetch(`${API}/adminsignup`, {
+        
         method: "POST",
         headers: {
             "Accept" : "application/json",
@@ -11,6 +12,7 @@ export const signup = admin => {
         },
         body: JSON.stringify(admin)
     })
+    
     .then(response => {
         return response.json();
     })

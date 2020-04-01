@@ -40,7 +40,7 @@ const offerRoutes = require('./routes/offer')
 const mongoose = require('mongoose');
 
 //Database connection is established
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/discount",
+mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_hl7dgzkm:kdl12v6vrnq7hkn4svcchgja92@ds133086.mlab.com:33086/heroku_hl7dgzkm",
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,

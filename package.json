@@ -1,7 +1,7 @@
 {
-  "name": "projbackend",
+  "name": "root",
   "version": "1.0.0",
-  "description": "Discount WebApp",
+  "description": "Offerex WebApp",
   "main": "server.js",
   "scripts": {
     "build": "cd client && npm run build",
