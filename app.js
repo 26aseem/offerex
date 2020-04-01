@@ -1,3 +1,5 @@
+
+
 //Express and Mongoose
 require('dotenv').config();
 
@@ -7,6 +9,24 @@ const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+
+
+// ... other imports 
+const path = require("path")
+
+// ... other app.use middleware 
+app.use(express.static(path.join(__dirname, "client", "build")))
+
+// ...
+// Right before your app.listen(), add this:
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
+app.listen(...)
+
+
+
 
 
 const adminauthRoutes = require('./routes/adminauth')
@@ -20,7 +40,7 @@ const offerRoutes = require('./routes/offer')
 const mongoose = require('mongoose');
 
 //Database connection is established
-mongoose.connect(process.env.DATABASE,
+mongoose.connect(process.env.MONGODB_URI,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
