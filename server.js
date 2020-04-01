@@ -10,10 +10,10 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
 
-
 // ... other imports 
 const path = require("path")
 
+/*
 // ... other app.use middleware 
 app.use(express.static(path.join(__dirname, "client", "build")))
 
@@ -25,7 +25,7 @@ app.get("*", (req, res) => {
 
 app.listen(...)
 
-
+*/
 
 
 
@@ -40,7 +40,7 @@ const offerRoutes = require('./routes/offer')
 const mongoose = require('mongoose');
 
 //Database connection is established
-mongoose.connect(process.env.MONGODB_URI,
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/discount",
 {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -65,6 +65,10 @@ app.use("/api",offerRoutes);
 
 //Port for listening
 const port = process.env.PORT || 8000;
+
+if(process.env.NODE_ENV === 'production'){
+    app.use(express.static('client/build'));    
+}
 
 //Starting a server
 app.listen(port, () => {
