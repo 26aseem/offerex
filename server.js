@@ -13,22 +13,6 @@ const MongoClient = require('mongodb').MongoClient;
 // ... other imports 
 const path = require("path")
 
-/*
-// ... other app.use middleware 
-app.use(express.static(path.join(__dirname, "client", "build")))
-
-// ...
-// Right before your app.listen(), add this:
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-});
-
-app.listen(...)
-
-*/
-
-
-
 const adminauthRoutes = require('./routes/adminauth')
 const adminRoutes = require('./routes/admin')
 const merchantRoutes = require('./routes/merchant')
