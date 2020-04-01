@@ -25,7 +25,6 @@ const AdminSignin = () => {
         event.preventDefault()
         setValues({...values, error: false, loading:true})
         signin({username, password})
-        console.log(username,password)
         .then(data => {
             if(data.error){
                 setValues({...values, error: data.error, loading: false})
