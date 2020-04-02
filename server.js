@@ -37,14 +37,17 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_hl7dgzkm:kdl12v6vr
 //Middlewares
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use('*',cors());
+app.use(cors({
+    origin: "http://localhost:3000", // restrict calls to those this address
+    methods: "GET, PUT, POST, DELETE" 
+}));
 
 
 //CORS middleware
 var corsMiddleware = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*'); //replace localhost with actual host
     res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+    res.header('Access-Control-Allow-Headers', 'Origin,Content-Type, X-Requested-With, Accept,Authorization');
 
     next();
 }
