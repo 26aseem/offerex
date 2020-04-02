@@ -37,7 +37,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://heroku_hl7dgzkm:kdl12v6vr
 //Middlewares
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors());
+app.use('*',cors());
 
 
 //CORS middleware
@@ -51,6 +51,7 @@ var corsMiddleware = function(req, res, next) {
 
 app.use(corsMiddleware);
 
+app.set('host', "*.*.*.*"); 
 
 
 //My Routes
