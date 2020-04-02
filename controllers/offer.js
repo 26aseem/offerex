@@ -144,9 +144,9 @@ exports.getAllOffers = (req, res) => {
     let limit = req.query.limit ? parseInt(req.query.limit) : 100;
     let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
 
-    Offer.find()
+    Offer.find({merch:req.profile._id})
     .select("-photo")
-    .populate("merchant")
+    //.populate("merchant")
     .sort([[sortBy, "asc"]])
     .limit(limit)
     .exec((err, offers) => {
