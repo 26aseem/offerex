@@ -39,6 +39,20 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
+
+//CORS middleware
+var corsMiddleware = function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'localhost'); //replace localhost with actual host
+    res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, PUT, PATCH, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Authorization');
+
+    next();
+}
+
+app.use(corsMiddleware);
+
+
+
 //My Routes
 ///api is added before all 
 app.use("/api",adminauthRoutes);
